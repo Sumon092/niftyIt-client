@@ -1,5 +1,6 @@
 import React from 'react';
 import Tilt from 'react-parallax-tilt';
+import { Link } from "react-router-dom"
 
 const Signup = () => {
     return (
@@ -14,8 +15,12 @@ const Signup = () => {
                         <input type="email" placeholder='Enter Your Email' className="font-poppins bg-transparent border border-t-0 border-l-0 border-r-0 focus:outline-none text-white tracking-wide" />
                         <input type="password" placeholder='password' className="font-poppins bg-transparent border border-t-0 border-l-0 border-r-0 focus:outline-none text-white tracking-wide" />
                         <input type="password" placeholder='Confirm Password' className="font-poppins bg-transparent border border-t-0 border-l-0 border-r-0 focus:outline-none text-white tracking-wide" />
-
+                        <span className='text-secondary ml-3'>Already have an account?
+                            <Link to="/login" className='text-success ml-3'>Login</Link>
+                        </span>
                         <input type="Submit" className='cursor-pointer font-poppins rounded-full px-5 py-2 bg-white bg-opacity-50 hover:bg-white hover:bg-opacity-80 ' />
+
+
                     </form>
                 </div>
             </Tilt>

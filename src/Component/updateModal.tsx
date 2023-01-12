@@ -1,15 +1,17 @@
 import React from 'react';
 
-const updateModal = () => {
+const UpdateModal = () => {
     return (
         <div>
-            <input type="checkbox" id="my-modal-6" className="modal-toggle" />
+            <input type="checkbox" id="update-modal" className="modal-toggle" />
             <div className="modal modal-bottom sm:modal-middle">
                 <div className="modal-box">
-                    <h3 className="font-bold text-lg">Congratulations random Internet user!</h3>
-                    <p className="py-4">You've been selected for a chance to get one year of subscription to use Wikipedia for free!</p>
+                    <h3 className="font-bold text-lg mb-5 text-success">Update Your profile!</h3>
+                    <input name="name" type="text" defaultValue={""} placeholder="Update your Name" className="input input-bordered input-primary w-full" />
+                    <input name="gender" type="text" defaultValue={""} placeholder="Update your gender" className="mt-3 mb-3 input input-bordered input-primary w-full" />
+                    <input name="birthDay" type="text" defaultValue={""} placeholder="Update your birthday" className="input input-bordered input-primary w-full" />
                     <div className="modal-action">
-                        <label htmlFor="my-modal-6" className="btn">Yay!</label>
+                        <label htmlFor="update-modal" className="btn btn-success btn-xs text-white">Update</label>
                     </div>
                 </div>
             </div>
@@ -17,4 +19,4 @@ const updateModal = () => {
     );
 };
 
-export default updateModal;
+export default UpdateModal;

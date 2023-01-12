@@ -1,5 +1,6 @@
 import React from 'react';
 import Tilt from 'react-parallax-tilt';
+import { Link } from "react-router-dom"
 
 const Login = () => {
     return (
@@ -11,7 +12,10 @@ const Login = () => {
                     <form className='h-full flex flex-col justify-evenly items-center'>
                         <div className='text-white font-poppins text-2xl tracking-widest'>Login</div>
                         <input type="email" placeholder='Enter your email' className="font-poppins bg-transparent border border-t-0 border-l-0 border-r-0 focus:outline-none text-white tracking-wide" />
-                        <input type="email" placeholder='Enter your password' className="font-poppins bg-transparent border border-t-0 border-l-0 border-r-0 focus:outline-none text-white tracking-wide" />
+                        <input type="email" placeholder='Enter your password' className="max-w-xs font-poppins bg-transparent border border-t-0 border-l-0 border-r-0 focus:outline-none text-white tracking-wide" />
+                        <span className='text-warning ml-3'>Don't have any account?
+                            <Link to="/signup" className='text-success ml-3'>Signup Now</Link>
+                        </span>
                         <input type="Submit" className='cursor-pointer font-poppins rounded-full px-5 py-2 bg-white bg-opacity-50 hover:bg-white hover:bg-opacity-80 ' />
                     </form>
                 </div>
