@@ -2,14 +2,14 @@ import React from "react";
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom"
-import { logout } from "../redux/userSlice";
+// import { logout } from "../redux/userSlice";
 
 export default function Navbar() {
     const currentUser = useSelector(state => state["user"]);
     const dispatch = useDispatch()
     const [navbarOpen, setNavbarOpen] = React.useState(false);
     const handleLogout = () => {
-        dispatch(logout())
+        // dispatch(logout())
     }
     return (
         <>

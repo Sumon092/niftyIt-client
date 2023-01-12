@@ -1,11 +1,11 @@
 
 import { Routes, Route } from "react-router-dom";
-import Login from "./pages/Login";
-import Signup from "./pages/SignUp";
 import Navbar from "./Component/NavBar";
 import Profile from "./pages/Profile";
 import Product from "./pages/Product";
-
+// import Signup from "./pages/SignUp";
+import Register from "./pages/Register";
+import SignIn from "./pages/SignIn";
 
 
 
@@ -15,11 +15,11 @@ function App() {
       <Navbar />
       <Routes>
         <Route path="/" element={<Profile />}></Route>
-        <Route path="/Login" element={<Login />}></Route>
-        <Route path="/signup" element={<Signup />} />
+        <Route path="/register" element={<Register />} />
+        <Route path="/signin" element={<SignIn />}></Route>
         <Route path="/profile" element={<Profile />} />
         <Route path="/product" element={<Product />} />
-        <Route path="*" element={<Signup />} />
+        {/* <Route path="*" element={<Signup />} /> */}
       </Routes>
     </>
   );
