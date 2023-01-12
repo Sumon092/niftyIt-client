@@ -16,10 +16,10 @@ const Profile = () => {
                         <p className='text-white m-auto'>Birth Day: <span className='ml-1 m-auto '>10-10-1990</span></p>
 
                         <div className="card-actions justify-center">
-                            <button className="btn btn-warning btn-xs text-white">Subscribed</button>
+                            <button className="btn btn-error btn-xs text-white">Subscribed</button>
                         </div>
                         <div className="card-actions justify-center">
-                            <button className="btn btn-success btn-xs text-white">Update</button>
+                            <label htmlFor="my-modal-6" className="btn btn-success btn-xs text-white">Update</label>
                         </div>
                     </div>
                 </div>
