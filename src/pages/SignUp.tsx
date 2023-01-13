@@ -1,8 +1,11 @@
 import React from 'react';
 import Tilt from 'react-parallax-tilt';
-import { Link } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom";
+import axios from 'axios';
 
 const Signup = () => {
+    // const navigate = useNavigate()
+
     return (
         <div className="bg-gray-900 h-auto w-screen relative overflow-hidden flex justify-center items-center p-16">
             <div className="h-40-r w-40-r bg-gradient-to-r from-green-400 to-white-500 rounded-full absolute left-2/3 -top-56 transform rotate-160 animate-pulse"></div>

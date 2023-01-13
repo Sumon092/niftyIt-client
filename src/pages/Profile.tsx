@@ -1,7 +1,11 @@
 import React from 'react';
+import { useDispatch } from 'react-redux';
+import { useSelector } from 'react-redux';
 import UpdateModal from '../Component/UpdateModal';
 
 const Profile = () => {
+    const dispatch = useDispatch();
+    const { currentUser } = useSelector(state => state["user"]);
     return (
         <>
             <div className='flex justify-center items-center h-auto p-24 bg-gray-900'>
@@ -12,9 +16,9 @@ const Profile = () => {
                         </div>
                     </div>
                     <div className="card-body">
-                        <h2 className="card-title text-white m-auto">Mohammad Sumon</h2>
-                        <p className='text-white m-auto'>Gender: <span className='ml-1 m-auto '>Male</span></p>
-                        <p className='text-white m-auto'>Birth Day: <span className='ml-1 m-auto '>10-10-1995</span></p>
+                        <h2 className="card-title text-white m-auto">{currentUser?.name}</h2>
+                        <p className='text-white m-auto'>Gender: <span className='ml-1 m-auto '>{currentUser?.gender}</span></p>
+                        <p className='text-white m-auto'>Birth Day: <span className='ml-1 m-auto '>{currentUser?.birthDay}</span></p>
 
                         <div className="card-actions justify-center">
                             <button className="btn btn-error btn-xs text-white">Subscribed</button>
