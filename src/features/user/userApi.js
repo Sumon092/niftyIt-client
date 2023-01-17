@@ -15,7 +15,7 @@ export const usersApi = apiSlice.injectEndpoints({
         updateUser: builder.mutation({
             query: ({ id, data }) => ({
                 url: `http://localhost:5000/api/v1/user/updateUser/${id}`,
-                method: "PATCH",
+                method: "PUT",
                 body: data,
             }),
             invalidatesTags: (result, error, arg) => [

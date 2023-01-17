@@ -1,16 +1,18 @@
 
-import { useGetUsersQuery } from '../features/user/userApi';
+import { useParams } from 'react-router-dom';
+import { useGetUserQuery, useGetUsersQuery } from '../features/user/userApi';
 
 const UpdateModal = () => {
-
-    const { data: user, isLoading, isError } = useGetUsersQuery();
-    JSON.stringify(user)
+    const { id } = useParams()
+    const { data: user, isLoading, isError } = useGetUserQuery(id);
+    // JSON.stringify(user)
     console.log(user);
     const handleUpdate = (e) => {
         e.preventDefault()
     }
     return (
         <>
+
             {
                 isLoading && <p>Loading...</p>
             }
