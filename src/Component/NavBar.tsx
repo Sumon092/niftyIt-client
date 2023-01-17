@@ -62,7 +62,7 @@ export default function Navbar() {
                                         <span>logout</span>
                                     </Link>
                                 </li> : <li className="nav-item">
-                                    <Link to="/login"
+                                    <Link to="/signin"
                                         className="px-3 py-2 flex items-center text-xs uppercase font-bold leading-snug text-white hover:opacity-75"
 
                                     >

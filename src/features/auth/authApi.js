@@ -16,14 +16,14 @@ export const authApi = apiSlice.injectEndpoints({
                     localStorage.setItem(
                         "auth",
                         JSON.stringify({
-                            accessToken: result.data.accessToken,
+                            accessToken: result.data.access_token,
                             user: result.data.user,
                         })
                     );
 
                     dispatch(
                         userLoggedIn({
-                            accessToken: result.data.accessToken,
+                            accessToken: result.data.access_token,
                             user: result.data.user,
                         })
                     );
@@ -46,14 +46,14 @@ export const authApi = apiSlice.injectEndpoints({
                     localStorage.setItem(
                         "auth",
                         JSON.stringify({
-                            accessToken: result.data.accessToken,
+                            accessToken: result.data.access_token,
                             user: result.data.user,
                         })
                     );
 
                     dispatch(
                         userLoggedIn({
-                            accessToken: result.data.accessToken,
+                            accessToken: result.data.access_token,
                             user: result.data.user,
                         })
                     );
@@ -62,7 +62,15 @@ export const authApi = apiSlice.injectEndpoints({
                 }
             },
         }),
+        updateUser: builder.mutation({
+            query: ({ id, data }) => ({
+                url: `http://localhost:5000/api/v1/user/updateUser/${id}`,
+                method: 'PUT',
+                body: { data },
+            }),
+            // invalidatesTags: ['Albums'],
+        }),
     }),
 });
 
-export const { useLoginMutation, useRegisterMutation } = authApi;
+export const { useLoginMutation, useRegisterMutation, useUpdateUserMutation } = authApi;
