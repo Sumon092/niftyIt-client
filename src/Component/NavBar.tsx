@@ -1,12 +1,8 @@
 import React from "react";
-import { useDispatch } from "react-redux";
-import { useSelector } from "react-redux";
 import { Link } from "react-router-dom"
-// import { logout } from "../redux/userSlice";
+
 
 export default function Navbar() {
-    const currentUser = useSelector(state => state["user"]);
-    const dispatch = useDispatch()
     const [navbarOpen, setNavbarOpen] = React.useState(false);
     const handleLogout = () => {
         // dispatch(logout())
@@ -54,7 +50,7 @@ export default function Navbar() {
                                 </Link>
                             </li>
                             {
-                                currentUser ? <li className="nav-item">
+                                "currentUser" ? <li className="nav-item">
                                     <Link onClick={handleLogout} to="/signup"
                                         className="px-3 py-2 flex items-center text-xs uppercase font-bold leading-snug text-white hover:opacity-75"
 
