@@ -1,47 +1,52 @@
 
-import { useParams } from 'react-router-dom';
-import { useGetUserQuery, useGetUsersQuery } from '../features/user/userApi';
+import { useEffect, useState } from 'react';
+import { useGetUserQuery, useUpdateUserMutation } from '../features/user/userApi';
 
-const UpdateModal = () => {
-    const { id } = useParams()
+const UpdateModal = ({ id }) => {
     const { data: user, isLoading, isError } = useGetUserQuery(id);
-    // JSON.stringify(user)
-    console.log(user);
-    const handleUpdate = (e) => {
-        e.preventDefault()
+    const [updateUser, { data, error }] = useUpdateUserMutation();
+    const [name, setName] = useState(user?.name);
+    const [gender, setGender] = useState(user?.gender);
+    const [birthDay, setBirthday] = useState(user?.birthDay);
+
+    useEffect(() => {
+        setName(user?.name || "");
+        setGender(user?.gender || "");
+        setBirthday(user?.birthDay || "");
+    }, [user]);
+
+
+    const handleUpdate = () => {
+
+        updateUser({
+            id,
+            data: {
+                name,
+                birthDay,
+                gender,
+            }
+        });
+
     }
     return (
         <>
-
-            {
-                isLoading && <p>Loading...</p>
-            }
-            {
-                !isLoading && isError && <p>There is an Error</p>
-            }
-            {
-                !isLoading && !isError && user?.length === 0 && <p>No video found</p>
-            }
-            {
-                !isLoading && !isError && user?.length > 0 &&
-                user?.map(user => <div key={user?._id} >
-                    <input type="checkbox" id="update-modal" className="modal-toggle" />
-                    <div className="modal modal-bottom sm:modal-middle">
-                        <form onSubmit={handleUpdate}>
-                            <div className="modal-box">
-                                <h3 className="font-bold text-lg mb-5 text-success">Update Your profile!</h3>
-                                <input defaultValue={user?.name} name="name" type="text" placeholder="Update your Name" className="input input-bordered input-primary w-full input-sm" />
-                                <input name="gender" type="text" defaultValue={user?.gender} placeholder="Update your gender" className="mt-3 mb-3 input input-bordered input-primary w-full input-sm" />
-                                <input name="birthDay" type="text" defaultValue={user?.birthDay} placeholder="Update your birthday" className="input input-bordered input-primary w-full input-sm" />
-                                <div className="modal-action">
-                                    <label htmlFor="update-modal" className="btn btn-success btn-xs text-white">Update</label>
-                                </div>
-
+            <div>
+                <input type="checkbox" id="update-modal" className="modal-toggle" />
+                <div className="modal modal-bottom sm:modal-middle">
+                    <form onSubmit={handleUpdate}>
+                        <div className="modal-box">
+                            <h3 className="font-bold text-lg mb-5 text-success">Update Your profile!</h3>
+                            <input value={name} name="name" type="text" placeholder="Update your Name" className="input input-bordered input-primary w-full input-sm" onChange={(e) => setName(e.target.value)} />
+                            <input name="gender" type="text" value={gender} placeholder="Update your gender" className="mt-3 mb-3 input input-bordered input-primary w-full input-sm" onChange={(e) => setGender(e.target.value)} />
+                            <input name="birthDay" type="text" value={birthDay} placeholder="Update your birthday" className="input input-bordered input-primary w-full input-sm" onChange={(e) => setBirthday(e.target.value)} />
+                            <div className="modal-action">
+                                <label htmlFor="update-modal" className="btn btn-success btn-xs text-white" onClick={() => handleUpdate()}>Update</label>
                             </div>
-                        </form>
-                    </div>
-                </div>)
-            }
+
+                        </div>
+                    </form>
+                </div>
+            </div>
         </>
 
     );
