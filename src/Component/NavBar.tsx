@@ -1,12 +1,21 @@
-import React from "react";
+import React, { useState } from "react";
+import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom"
+import { userLoggedOut } from "../features/auth/authSlice";
 
 
 export default function Navbar() {
-    const [navbarOpen, setNavbarOpen] = React.useState(false);
-    const handleLogout = () => {
-        // dispatch(logout())
+
+    const dispatch = useDispatch();
+    const [login, setLogin] = useState("login");
+
+    const logout = () => {
+        dispatch(userLoggedOut());
+        setLogin("logout")
+        localStorage.clear();
     }
+
+    const [navbarOpen, setNavbarOpen] = React.useState(false);
     return (
         <>
             <nav className="relative flex flex-wrap items-center justify-between px-2 py-3 bg-teal-900">
@@ -36,13 +45,12 @@ export default function Navbar() {
                             <li className="nav-item">
                                 <Link to="/profile"
                                     className="px-3 py-2 flex items-center text-xs uppercase font-bold leading-snug text-white hover:opacity-75"
-
                                 >
                                     <span className="ml-2">Profile</span>
                                 </Link>
                             </li>
                             <li className="nav-item">
-                                <Link to="/product"
+                                <Link replace={true} to="/product"
                                     className="px-3 py-2 flex items-center text-xs uppercase font-bold leading-snug text-white hover:opacity-75"
 
                                 >
@@ -51,11 +59,14 @@ export default function Navbar() {
                             </li>
                             {
                                 "currentUser" ? <li className="nav-item">
-                                    <Link onClick={handleLogout} to="/signup"
+                                    <Link to="/signup"
                                         className="px-3 py-2 flex items-center text-xs uppercase font-bold leading-snug text-white hover:opacity-75"
 
                                     >
-                                        <span>logout</span>
+                                        {
+                                            login ? <span onClick={logout}>logout</span> : ""
+                                        }
+
                                     </Link>
                                 </li> : <li className="nav-item">
                                     <Link to="/signin"

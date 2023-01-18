@@ -35,6 +35,7 @@ const UpdateModal = ({ id }) => {
                 <div className="modal modal-bottom sm:modal-middle">
                     <form onSubmit={handleUpdate}>
                         <div className="modal-box">
+                            <label htmlFor="update-modal" className="btn btn-sm btn-circle absolute right-2 top-2">✕</label>
                             <h3 className="font-bold text-lg mb-5 text-success">Update Your profile!</h3>
                             <input value={name} name="name" type="text" placeholder="Update your Name" className="input input-bordered input-primary w-full input-sm" onChange={(e) => setName(e.target.value)} />
                             <input name="gender" type="text" value={gender} placeholder="Update your gender" className="mt-3 mb-3 input input-bordered input-primary w-full input-sm" onChange={(e) => setGender(e.target.value)} />

@@ -23,10 +23,20 @@ export const usersApi = apiSlice.injectEndpoints({
                 { type: "User", id: arg.id }
             ],
         }),
+        addPayment: builder.mutation({
+            query: (data) => ({
+                url: "/http://localhost:5000/api/v1/user/create-payment-intent",
+                method: "POST",
+                body: data,
+            }),
+            invalidatesTags: ["Users"],
+        }),
     }),
 });
 
 export const {
     useGetUsersQuery,
     useGetUserQuery,
-    useUpdateUserMutation } = usersApi;
+    useAddPaymentMutation,
+    useUpdateUserMutation,
+} = usersApi;
